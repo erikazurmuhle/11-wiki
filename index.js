@@ -1,7 +1,7 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
 const morgan = require("morgan");
-
+const db = require("./db");
 const routes = require("./routes");
 
 const app = express();
@@ -20,7 +20,9 @@ nunjucks.configure("views", { noCache: true });
 app.use(morgan("tiny"));
 //middleware de rutas
 app.use("/", routes);
-
-app.listen(PORT, () => {
-	console.log(`Servidor escuchando en http://localhost:${PORT}`);
+db.sync().then(() => {
+  console.log("db connected");
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  });
 });
