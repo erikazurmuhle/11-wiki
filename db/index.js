@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
 const db = new Sequelize("postgres://postgres@localhost:5432/wiki", {
-	loggin: false,
-	dialect: "postgres",
+	logging: false,
 });
 
 module.exports = db;

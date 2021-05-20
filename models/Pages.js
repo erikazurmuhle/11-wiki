@@ -6,11 +6,11 @@ class Page extends S.Model {}
 Page.init(
 	{
 		title: {
-			type: S.DataTypes.CHAR(100),
+			type: S.STRING,
 			allowNull: false,
 		},
 		urlTitle: {
-			type: S.CHAR(100),
+			type: S.STRING,
 			allowNull: false,
 		},
 		content: {
@@ -19,6 +19,20 @@ Page.init(
 		},
 		status: {
 			type: S.ENUM("open", "closed"),
+			defaultValue: "open",
+		},
+		date: {
+			type: S.DATE,
+			defaultValue: S.NOW,
+		},
+		route: {
+			type: S.VIRTUAL,
+			get() {
+				return `/wiki/${this.urlTitle}`;
+			},
+			set(value) {
+				throw new Error("Fallo la creacion de la url");
+			},
 		},
 	},
 	{ sequelize: db, modelName: "pages" }

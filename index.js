@@ -20,6 +20,17 @@ nunjucks.configure("views", { noCache: true });
 app.use(morgan("tiny"));
 //middleware de rutas
 app.use("/", routes);
+
+app.use((req, res, next) => {
+	let error = new Error("Error 404 not found");
+	next(error);
+});
+
+app.use(function (err, req, res, next) {
+	// console.error(err.stack);
+	res.render("404");
+});
+
 database.sync({ force: true }).then(() => {
 	console.log("db connected");
 	app.listen(PORT, () => {

@@ -12,6 +12,10 @@ User.init(
 		email: {
 			type: S.CHAR(100),
 			allowNull: false,
+			unique: true,
+			validate: {
+				isEmail: true,
+			},
 		},
 	},
 	{ sequelize: db, modelName: "users" }
