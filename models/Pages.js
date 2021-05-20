@@ -30,9 +30,6 @@ Page.init(
 			get() {
 				return `/wiki/${this.urlTitle}`;
 			},
-			set(value) {
-				throw new Error("Fallo la creacion de la url");
-			},
 		},
 	},
 	{ sequelize: db, modelName: "pages" }
