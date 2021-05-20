@@ -4,17 +4,17 @@ const db = require("../db");
 class User extends S.Model {}
 
 User.init(
-  {
-    name: {
-      type: S.DataTypes.CHAR(100),
-      allowNull: false,
-    },
-    email: {
-      type: S.DataTypes.CHAR(100),
-      allowNull: false,
-    },
-  },
-  { sequelize: db, modelName: "pages" }
+	{
+		name: {
+			type: S.CHAR(100),
+			allowNull: false,
+		},
+		email: {
+			type: S.CHAR(100),
+			allowNull: false,
+		},
+	},
+	{ sequelize: db, modelName: "users" }
 );
 
 module.exports = User;
