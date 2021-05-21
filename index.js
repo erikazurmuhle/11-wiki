@@ -7,6 +7,11 @@ const routes = require("./routes");
 const app = express();
 
 const PORT = 3000;
+
+//middleware interpretador
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // hace res.render funcionar con archivos html
 app.set("view engine", "html");
 // cuando res.render funciona con archivos html, haz que use nunjucks para eso.
@@ -21,10 +26,10 @@ app.use(morgan("tiny"));
 //middleware de rutas
 app.use("/", routes);
 
-app.use((req, res, next) => {
-	let error = new Error("Error 404 not found");
-	next(error);
-});
+// app.use((req, res, next) => {
+// 	let error = new Error("Error 404 not found");
+// 	next(error);
+// });
 
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
