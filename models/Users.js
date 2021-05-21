@@ -8,6 +8,7 @@ User.init(
 		name: {
 			type: S.CHAR(100),
 			allowNull: false,
+			unique: true,
 		},
 		email: {
 			type: S.CHAR(100),
