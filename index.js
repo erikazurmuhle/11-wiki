@@ -32,13 +32,13 @@ app.use("/", routes);
 // });
 
 app.use(function (err, req, res, next) {
-	console.error(err.stack);
-	res.render("404");
+  console.log(err.stack);
+  res.render("404");
 });
 
 database.sync({ force: true }).then(() => {
-	console.log("db connected");
-	app.listen(PORT, () => {
-		console.log(`Servidor escuchando en http://localhost:${PORT}`);
-	});
+  console.log("db connected");
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  });
 });

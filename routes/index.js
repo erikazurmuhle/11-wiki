@@ -5,8 +5,11 @@ const wikiRouter = require("./wiki");
 // const userRouter = require("./user");
 
 router.get("/", (req, res, next) => {
-	res.render("index");
+  Page.findAll().then((pages) => {
+    res.render("index", { pages });
+  });
 });
+
 router.use("/wiki", wikiRouter);
 // router.use("/users", userRouter);
 
